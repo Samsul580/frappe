@@ -244,8 +244,16 @@ def make_links(columns, data):
 	for row in data:
 		doc_name = row.get('name')
 		for col in columns:
+<<<<<<< HEAD
 			if col.fieldtype == "Link" and col.options != "Currency":
 				if col.options and row.get(col.fieldname):
+=======
+			if not row.get(col.fieldname):
+				continue
+
+			if col.fieldtype == "Link":
+				if col.options and col.options != "Currency":
+>>>>>>> aac20f5d15 (fix: keyerror in auto email report)
 					row[col.fieldname] = get_link_to_form(col.options, row[col.fieldname])
 			elif col.fieldtype == "Dynamic Link":
 				if col.options and row.get(col.fieldname) and row.get(col.options):
